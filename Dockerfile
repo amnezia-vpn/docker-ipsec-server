@@ -7,7 +7,7 @@ WORKDIR /opt/src
 
 RUN set -x \
     && apk add --no-cache \
-         bash bind-tools coreutils openssl uuidgen wget xl2tpd iproute2 \
+         bash bind-tools coreutils dumb-init openssl uuidgen wget xl2tpd iproute2 \
          libcap-ng libcurl libevent linux-pam musl nspr nss nss-tools \
          bison flex gcc make libc-dev bsd-compat-headers linux-pam-dev \
          nss-dev libcap-ng-dev libevent-dev curl-dev nspr-dev \
@@ -28,4 +28,4 @@ RUN set -x \
          nss-dev libcap-ng-dev libevent-dev curl-dev nspr-dev
 
 EXPOSE 500/udp 4500/udp
-CMD ["/opt/src/run.sh"]
+ENTRYPOINT [ "dumb-init", "tail -f /dev/null" ]
