@@ -28,4 +28,4 @@ RUN set -x \
          nss-dev libcap-ng-dev libevent-dev curl-dev nspr-dev
 
 EXPOSE 500/udp 4500/udp
-ENTRYPOINT [ "dumb-init", "tail -f /dev/null" ]
+ENTRYPOINT [ "dumb-init", "tail", "-f", "/dev/null" ]
